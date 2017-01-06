@@ -1,0 +1,58 @@
+<!-- /section:basics/sidebar -->
+<div class="main-content" style="background: #CCC;">
+    <div class="main-content-inner">        
+        <div class="page-content">   
+            <div class="row">
+
+                <div class="page-header" style="margin-left: 0px;border-bottom: none;">
+                    <h1 style="margin-top: 8px; margin-left: 15px;">
+                        Profile Setting                     
+                    </h1>                    
+                </div>                
+
+                <div class="col-xs-12">
+                    <div class="content-main-area" style="padding: 20px;">
+
+                        <div id="flash-msg" tabindex="99" class="col-xs-12 " style="display: block;"></div>
+
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form name="userForm" class="form-horizontal" action="" ng-init="fillAdminDetails()">
+                            <!-- #section:elements.form -->
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Name  <span style="color: red;">*</span> :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" placeholder="Name" ng-model="user.name" class="col-xs-10 col-sm-5" required="required"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Email  <span style="color: red;">*</span> :</label>
+                                <div class="col-sm-9">
+                                    <input type="email" id="form-field-1" placeholder="Email" ng-model="user.email" class="col-xs-10 col-sm-5" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Phone  <span style="color: red;">*</span> :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" placeholder="Phone No." ng-model="user.phone" class="col-xs-10 col-sm-5" required="required"/>
+                                </div>
+                            </div>  
+
+                            <div class="form-group" style="margin: 15px 0;">
+                                <div class="col-md-offset-3 col-md-9"> 
+                                    <button class="btn btn-info" ng-disabled="!userForm.$valid" ng-click="updateAdminProfile()" type="button"><i class="ace-icon fa fa-check bigger-110"></i> Update </button>  &nbsp; &nbsp; &nbsp;
+                                    <a class="btn" href="admin/#/dashboard"> <i class="ace-icon fa fa-undo bigger-110"></i> Cancel </a>
+                                </div>
+                            </div>                                    
+
+                        </form>
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

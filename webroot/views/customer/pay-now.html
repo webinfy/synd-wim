@@ -1,0 +1,132 @@
+<!-- /section:basics/sidebar -->
+<div class="main-content" style="background: #ccc;">
+    <div class="main-content-inner">   
+        <!-- /section:basics/content.breadcrumbs -->
+        <div class="page-content">   
+
+            <div class="row">
+
+                <div class="page-header" style="margin-left: 0px;border-bottom: none;">
+                    <h1 style="margin-top: 8px; margin-left: 15px;">
+                        Payment Details                 
+                    </h1>                    
+                </div>
+
+                <div class="col-xs-12">
+
+                    <div class="content-main-area" style="padding: 20px;" ng-init="viewPaymentDetail()">    
+
+                        <h2 ng-if="payment.note" style="text-align: center; font-size: 22px; font-weight: bold; color: #004184;">                                    
+                            {{payment.note}}
+                        </h2>
+
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form  ng-submit="paypalRedirect(payment)" class="form-horizontal" role="form" style="font-size: 15px;">
+                            <!-- #section:elements.form -->
+
+                            <!--customer/payments/pay-now-redirect/{{payment.uniq_id}}-->
+
+                            <div class="form-group">
+                                <label style="font-weight: bold; font-size: 18px;" class="col-sm-3 control-label no-padding-right" for="form-field-1">
+                                    Customer Details
+                                </label> 
+                            </div> 
+
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> {{payment.webfront.customer_name_alias}} : </label>                                                                 
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payment.name}} </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> {{payment.webfront.customer_reference_number_alias}} : </label>                                                                 
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payment.reference_number}} </label>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right"  for="form-field-1"> {{payment.webfront.customer_email_alias}} : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payment.email!='' ? payment.email : 'NA'}} </label>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> {{payment.webfront.customer_phone_alias}} : </label>                                                           
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payment.phone!='' ? payment.phone : 'NA'}} </label>
+                            </div> 
+
+                            <div class="form-group" ng-repeat="payee_custom_field in payment.payee_custom_fields">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> {{payee_custom_field.field}} : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payee_custom_field.value}} </label>
+                            </div>                             
+
+
+                            <div class="form-group">
+                                <label style="font-weight: bold; font-size: 18px;" class="col-sm-3 control-label no-padding-right" for="form-field-1">
+                                    Payment Details
+                                </label> 
+                            </div>    
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> Due Date : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> {{payment.uploaded_payment_file.payment_cycle_date| date}} </label>
+                            </div>
+
+                            <div class="form-group" ng-repeat="payment_custom_field in payment.payment_custom_fields">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> {{payment_custom_field.field}} : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> Rs. {{payment_custom_field.value}} </label>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> Total Fee : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> Rs. {{payment.fee}} </label>
+                            </div> 
+
+                            <!--
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> Convenience Fee : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> Rs. {{payment.convenience_fee_amount}} </label>
+                            </div> 
+                            -->
+
+                            <div class="form-group" ng-if="true">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> Late fee : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> 
+                                    Rs. {{payment.late_fee_amount}}                                   
+                                    <span style="color: red; margin-left: 10px;" ng-if="payment.webfront.fixed_late_fee == 2"> (Note : Late Fee is Rs {{payment.late_fee_amount}}  Per Day from Due Date.)</span>
+                                    <span style="color: red; margin-left: 10px;" ng-if="payment.webfront.fixed_late_fee == 1"> (Note : Late Fee is Flat Rs {{payment.late_fee_amount}}  after Due Date.)</span>
+                                </label>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-4 text-right no-padding-right" for="form-field-1"> Net Bill Amount : </label> 
+                                <label class="col-sm-8 text-left" for="form-field-1"> Rs. {{payment.fee + payment.late_fee_amount}} </label>
+                            </div> 
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label no-padding-right" for="form-field-1"> &nbsp; </label> 
+                                <div class="col-sm-8"> 
+                                    <input type="checkbox" value="1" required="required" />  <a href="javascript:;" onclick="NewWindow(siteUrl + 'customer/users/term-and-conditions', 'Term & Conditions', 750, 600, true)"><label style="font-weight: bold;">Accept Term & Conditions</label></a>
+                                </div>
+                            </div>                          
+
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        Pay Now
+                                    </button>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <a class="btn" href="customer/#/payment-and-bills">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                        Cancel
+                                    </a>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="hr hr-24"></div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->     
+            </div>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

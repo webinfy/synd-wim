@@ -1,0 +1,639 @@
+<!-- /section:basics/sidebar -->
+<div class="main-content" style="background: #CCC;">
+    <div class="main-content-inner">
+
+        <div class="page-content">
+            <!-- #section:settings.box -->
+            <!-- /section:settings.box -->
+            <div class="row">
+                <div class="page-header" style="margin-left: 0px;border-bottom: none;">
+                    <h1 style="margin-top: 8px; margin-left: 15px;">
+                        Create a Advance Web Front                         
+                    </h1>
+                    <!--                    <p style="margin-left: 17px;margin-bottom: 0px;">Fill the form below to save information about your store.</p>-->
+                </div>
+
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="content-main-area" style="padding: 20px;">                                                
+                        <div class="tabbable col-xs-12 front-creation-tab-design">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#website-content">
+                                        <i class="green ace-icon fa fa-home bigger-120"></i>
+                                        Website Content
+                                        <span class="badge badge-success">1</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a data-toggle="tab" href="#payment-information">
+                                        <i class="ace-icon fa fa-print bigger-120"></i>
+                                        Customer Related Fields
+                                        <span class="badge badge-grey">2</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a data-toggle="tab" href="#promotion-setting">
+                                        <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+                                        Payment  Related Fields
+                                        <span class="badge badge-grey">3</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="website-content" class="tab-pane fade in active">
+                                    <form name="userForm" class="form-horizontal" role="form" ng-submit="userForm.$valid && updateProfile1()" ng-init="getProfileData1()">
+
+                                        <div class="alert alert-danger" id="error-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-times"></i> <span id="err-msg-content"></span></p>                            
+                                        </div>
+
+                                        <div class="alert alert-success" id="success-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-check"></i>&nbsp;Profile updated successfully!!.</p>                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Web Front Name : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="name" id="name" required=""  placeholder="Name" ng-model="user.name" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.name.$error.required"><font color="red">&nbsp;&nbsp;Name is required!</font></p>
+                                                <p ng-show="userForm.name.$error.minlength"><font color="red">&nbsp;&nbsp;Name is too short!</font></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email : </label>
+                                            <div class="col-sm-9">
+                                                <input type="email" name="email" id="email" required="" placeholder="Email" ng-model="user.email" class="col-xs-10 col-sm-5" />
+                                                <p ng-show="userForm.email.$error.required"><font color="red">&nbsp;&nbsp;Email is required!</font></p>
+                                                <p ng-show="userForm.email.$error.email"><font color="red">&nbsp;&nbsp;Please enter valid Email!</font></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">  Phone No. : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="phone" id="phone" required="" placeholder="Phone No." ng-model="user.phone" ng-minlength="10" maxlength="15" class="col-xs-10 col-sm-5" />
+                                                <p ng-show="userForm.phone.$error.required"><font color="red">&nbsp;&nbsp;Phone number is required!</font></p>
+                                                <p ng-show="userForm.phone.$error.minlength"><font color="red">&nbsp;&nbsp;Number is too short!</font></p>
+                                            </div>
+                                        </div>   
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Address : </label>
+                                            <div class="col-sm-9">                                           
+                                                <textarea name="address" class="col-xs-20 col-sm-5" required="" ng-model="user.address" style="padding-left: 5px;" placeholder="Address"></textarea>
+                                                <p ng-show="userForm.address.$error.required"><font color="red">&nbsp;&nbsp;Address is required!</font></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Description : </label>
+                                            <div class="col-sm-9">                                           
+                                                <textarea name="description" class="col-xs-20 col-sm-5" required="" ng-model="user.description" style="padding-left: 5px;" placeholder="Description"></textarea>
+                                                <p ng-show="userForm.description.$error.required"><font color="red">&nbsp;&nbsp;Description is required!</font></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Logo : </label>
+                                            <div class="col-sm-9">                            
+                                                <input type="file" id="logo" ngf-select ng-model="picFile" name="file" ngf-accept="'image/*'" class="col-xs-10 col-sm-5" style="padding: 5px 0;" >                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Payment Cycle Date : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="payment_cycle_date" id="payment-cycle-date" required="" ng-model="user.payment_cycle_date"  placeholder="Payment Cycle Date" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.payment_cycle_date.$error.required"><font color="red">&nbsp;&nbsp;Payment Cycle Date is required!</font></p>                              
+                                            </div>
+                                        </div>
+                                        <div class="clearfix form-actionsXX" style="margin: 15px 0;">
+                                            <div class="col-md-offset-3 col-md-9"> 
+                                                <button class="btn btn-info" ng-disabled="!userForm.$valid" ng-click="uploadPic(picFile)" type="button"><i class="ace-icon fa fa-check bigger-110"></i> Submit </button>  &nbsp; &nbsp; &nbsp;
+                                                <a class="btn" href="merchant/#/dashboard"> <i class="ace-icon fa fa-undo bigger-110"></i> Cancel </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="payment-information" class="tab-pane fade">
+                                    <form name="userForm" class="form-horizontal" role="form" ng-submit="userForm.$valid && updateProfile1()" ng-init="getProfileData1()">
+
+                                        <div class="alert alert-danger" id="error-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-times"></i> <span id="err-msg-content"></span></p>                            
+                                        </div>
+
+                                        <div class="alert alert-success" id="success-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-check"></i>&nbsp;Profile updated successfully!!.</p>                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Name : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="custom_name" id="custom_name" required=""  placeholder="Name" ng-model="user.custom_name" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.custom_name.$error.required"><font color="red">&nbsp;&nbsp;Name is required!</font></p>
+                                                <p ng-show="userForm.custom_name.$error.minlength"><font color="red">&nbsp;&nbsp;Name is too short!</font></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email : </label>
+                                            <div class="col-sm-9">
+                                                <input type="email" name="custom_email" id="custom_email" required="" placeholder="Email" ng-model="user.custom_email" class="col-xs-10 col-sm-5" />
+                                                <p ng-show="userForm.custom_email.$error.required"><font color="red">&nbsp;&nbsp;Email is required!</font></p>
+                                                <p ng-show="userForm.custom_email.$error.email"><font color="red">&nbsp;&nbsp;Please enter valid Email!</font></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">  Phone No. : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="custom_phone" id="custom_phone" required="" placeholder="Phone No." ng-model="user.custom_phone" ng-minlength="10" maxlength="15" class="col-xs-10 col-sm-5" />
+                                                <p ng-show="userForm.custom_phone.$error.required"><font color="red">&nbsp;&nbsp;Phone number is required!</font></p>
+                                                <p ng-show="userForm.custom_phone.$error.minlength"><font color="red">&nbsp;&nbsp;Number is too short!</font></p>
+                                            </div>
+                                        </div>   
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> CA1 : </label>
+                                            <div class="col-sm-9">                                           
+                                                <textarea name="CA1" class="col-xs-20 col-sm-5" required="" ng-model="user.CA1" style="padding-left: 5px;" placeholder="Address"></textarea>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA1', 'select-validation-CA1')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA1">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA1">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.custom_address.$error.required"><font color="red">&nbsp;&nbsp;Address is required!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">CA2 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="CA2" id="house_number" required=""  placeholder="House Number" ng-model="user.CA2" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA2', 'select-validation-CA2')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA2">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA2">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.house_number.$error.required"><font color="red">&nbsp;&nbsp;House no is required!</font></p>-->                                        
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">CA3 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="member_id" id="member_id" required=""  placeholder="Member Id" ng-model="user.member_id" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.member_id.$error.required"><font color="red">&nbsp;&nbsp;Member Id is required!</font></p>                                        
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA3', 'select-validation-CA3')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA3">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA3">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">CA4 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="parking_number" id="parking_number" required=""  placeholder="Parking Number" ng-model="user.parking_number" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.parking_number.$error.required"><font color="red">&nbsp;&nbsp;Parking Number is required!</font></p>                                        
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA4', 'select-validation-CA4')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA4">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA4">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">CA5 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="default_label_5" id="default_label_5" required=""  placeholder="Default Label" ng-model="user.default_label_5" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.default_label_5.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA5', 'select-validation-CA5')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA5">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA5">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">CA6 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="default_label_6" id="default_label_6" required=""  placeholder="Default Label" ng-model="user.default_label_6" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.default_label_6.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-CA6', 'select-validation-CA6')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-CA6">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-CA6">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix form-actionsXX" style="margin: 15px 0;">
+                                            <div class="col-md-offset-3 col-md-9"> 
+                                                <button class="btn btn-info" ng-disabled="!userForm.$valid" ng-click="uploadPic(picFile)" type="button"><i class="ace-icon fa fa-check bigger-110"></i> Submit </button>  &nbsp; &nbsp; &nbsp;
+                                                <a class="btn" href="merchant/#/dashboard"> <i class="ace-icon fa fa-undo bigger-110"></i> Cancel </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="promotion-setting" class="tab-pane fade">
+                                    <form name="userForm" class="form-horizontal" role="form" ng-submit="userForm.$valid && updateProfile1()" ng-init="getProfileData1()">
+
+                                        <div class="alert alert-danger" id="error-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-times"></i> <span id="err-msg-content"></span></p>                            
+                                        </div>
+
+                                        <div class="alert alert-success" id="success-msg" style="display: none;">
+                                            <button data-dismiss="alert" class="close" type="button"><i class="ace-icon fa fa-times"></i></button>
+                                            <p><i class="ace-icon fa fa-check"></i>&nbsp;Profile updated successfully!!.</p>                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Total Amount : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="total_amount" id="total_amount" required=""  placeholder="Total Amount" ng-model="user.total_amount" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                <p ng-show="userForm.total_amount.$error.required"><font color="red">&nbsp;&nbsp;Total Amount is required!</font></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> PA1 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA1" id="PA1" required="" placeholder="Water Charges" ng-model="user.PA1" class="col-xs-10 col-sm-5" />
+                                                <!--<p ng-show="userForm.water_charges.$error.required"><font color="red">&nbsp;&nbsp;Water Charges is required!</font></p>-->
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA1', 'select-validation-PA1')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA1">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA1">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">  PA2 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA2" id="PA2" required="" placeholder="Electricity Charges" ng-model="user.PA2" class="col-xs-10 col-sm-5"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA2', 'select-validation-PA2')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA2">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA2">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.electricity_charges.$error.required"><font color="red">&nbsp;&nbsp;Electricity Charges is required!</font></p>-->
+                                            </div>
+                                        </div>  
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA3 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA3" id="PA3" required=""  placeholder="Security Fees" ng-model="user.PA3" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA3', 'select-validation-PA3')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA3">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA3">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.security_fees.$error.required"><font color="red">&nbsp;&nbsp;Security Fees is required!</font></p>-->
+                                                <!--<p ng-show="userForm.security_fees.$error.minlength"><font color="red">&nbsp;&nbsp;Security Fees is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA4 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA4" id="PA4" required=""  placeholder="Parking Fees" ng-model="user.parking_fees" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA4', 'select-validation-PA4')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA4">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA4">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.parking_fees.$error.required"><font color="red">&nbsp;&nbsp;Parking Fees is required!</font></p>-->
+                                                <!--<p ng-show="userForm.parking_fees.$error.minlength"><font color="red">&nbsp;&nbsp;Parking Fees is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA5 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA5" id="PA5" required=""  placeholder="Sweeper Fees" ng-model="user.sweeper_fees" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA5', 'select-validation-PA5')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA5">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA5">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.sweeper_fees.$error.required"><font color="red">&nbsp;&nbsp;Sweeper Fees is required!</font></p>-->
+                                                <!--<p ng-show="userForm.sweeper_fees.$error.minlength"><font color="red">&nbsp;&nbsp;Sweeper Fees is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA6 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA6" id="PA6" required=""  placeholder="Default Label" ng-model="user.PA6" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA6', 'select-validation-PA6')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA6">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA6">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.payment_default_label_6.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>-->
+                                                <!--<p ng-show="userForm.payment_default_label_6.$error.minlength"><font color="red">&nbsp;&nbsp;Default Label is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA7 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA7" id="PA7" required=""  placeholder="Default Label" ng-model="user.PA7" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA7', 'select-validation-PA7')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA7">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA7">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.payment_default_label_7.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>-->
+                                                <!--<p ng-show="userForm.payment_default_label_7.$error.minlength"><font color="red">&nbsp;&nbsp;Default Label is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA8 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA8" id="PA8" required=""  placeholder="Default Label" ng-model="user.PA8" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA8', 'select-validation-PA8')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA8">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA8">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.payment_default_label_8.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>-->
+                                                <!--<p ng-show="userForm.payment_default_label_8.$error.minlength"><font color="red">&nbsp;&nbsp;Default Label is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA9 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA9" id="PA9" required=""  placeholder="Default Label" ng-model="user.PA9" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA9', 'select-validation-PA9')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA9">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA9">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.payment_default_label_9.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>-->
+                                                <!--<p ng-show="userForm.payment_default_label_9.$error.minlength"><font color="red">&nbsp;&nbsp;Default Label is too short!</font></p>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">PA10 : </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="PA10" id="PA10" required=""  placeholder="Default Label" ng-model="user.PA10" ng-minlength="3" class="col-xs-10 col-sm-5" autocomplete="off"/>
+                                                &nbsp;&nbsp;
+                                                <label>
+                                                    <input name="form-field-checkbox" class="ace" type="checkbox" onclick="toggleSelectOption('select-type-PA10', 'select-validation-PA10')">
+                                                    <span class="lbl"></span>
+                                                </label>&nbsp;&nbsp;
+                                                <select name="select_type" id="select-type-PA10">
+                                                    <option value="0">Type</option>
+                                                    <option value="Textbox">Textbox</option>
+                                                    <option value="Textarea">Text area</option>
+                                                    <option value="RadioButton">Radio Button</option>
+                                                    <option value="Dropdown">Dropdown</option>
+                                                </select>&nbsp;&nbsp;
+                                                <select name="select_validation" id="select-validation-PA10">
+                                                    <option value="0">Select Validation</option>
+                                                    <option value="NoValidation">No Validation</option>
+                                                    <option value="Numeric">Numeric</option>
+                                                    <option value="Alphanumeric">Alphanumeric</option>
+                                                    <option value="Character">Character</option>
+                                                </select>
+                                                <!--<p ng-show="userForm.payment_default_label_10.$error.required"><font color="red">&nbsp;&nbsp;Default Label is required!</font></p>-->
+                                                <!--<p ng-show="userForm.payment_default_label_10.$error.minlength"><font color="red">&nbsp;&nbsp;Default Label is too short!</font></p>-->
+                                            </div>
+                                        </div> 
+
+                                        <div class="clearfix form-actionsXX" style="margin: 15px 0;">
+                                            <div class="col-md-offset-3 col-md-9"> 
+                                                <button class="btn btn-info" ng-disabled="!userForm.$valid" ng-click="uploadPic(picFile)" type="button"><i class="ace-icon fa fa-check bigger-110"></i> Submit </button>  &nbsp; &nbsp; &nbsp;
+                                                <a class="btn" href="merchant/#/dashboard"> <i class="ace-icon fa fa-undo bigger-110"></i> Cancel </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- #section:elements.form -->                          
+                        <!--<br class="clear"/>-->                     
+
+
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
